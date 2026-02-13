@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ban Công Nghệ - Hải Trình Tương Lai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-body: #F0F9FF;
+            --bg-white: #FFFFFF;
+            --bg-header: #FFFFFFE5;
+            --header-border: #FFFFFFCC;
+            --shadow-color: #CBDBE8;
+            
+            --primary-dark: #1C4E75;
+            --primary-blue: #2FA0C6;
+            --secondary-blue: #58C9F3;
+            --accent-blue: #BDE5FF;
+            --footer-dark: #061826;
+            --social-bg: #040b13;
+            --footer-text-blue: #1886ae;
+
+            --text-main: #333333;
+            --text-muted: #64748B;
+            --text-white: #FFFFFF;
+            --text-white-muted: #FFFFFFB2;
+            --text-footer-bottom: #FFFFFF4D;
+
+            --gradient-primary: linear-gradient(107.34deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            --gradient-text: linear-gradient(90deg, #061826 0%, var(--primary-blue) 50%, var(--secondary-blue) 100%);
+            --gradient-hero: linear-gradient(90deg, var(--primary-blue) 50%, var(--secondary-blue) 100%);
+            
+            --shadow: 12px 12px 24px 0px var(--shadow-color);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: sticky;
+            top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: var(--bg-header);
+            border-radius: 48px;
+            border: 2px solid var(--header-border);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            margin: 20px 80px 0;
+        }
+
+        .header_logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        .header_text {
+            margin-left: 12px;
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
+
+        .header_nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .header_nav_item {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 16px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .header_nav_item:hover { color: var(--primary-blue); }
+
+        .header_cta-button {
+            background: var(--gradient-primary);
+            padding: 12px 32px;
+            border-radius: 30px;
+            box-shadow: 6px 6px 15px 0px rgba(47, 160, 198, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .header_cta-link {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            letter-spacing: 1.4px;
+        }
+
+        .header_cta-button:hover { transform: scale(1.05); }
+
+        /* --- MAIN VIEWS --- */
+        .view-container {
+            padding: 0 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 32px;
+            padding: 60px 0;
+        }
+
+        .pre-header {
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            background-color: var(--accent-blue);
+            padding: 8px 24px;
+            border-radius: 50px;
+            box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.05) inset;
+        }
+
+        .main-header {
+            font-weight: 700;
+            font-size: 72px;
+            line-height: 1.1;
+            color: var(--primary-dark);
+        }
+
+        .main-header span {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-header {
+            font-weight: 500;
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 650px;
+        }
+
+        .hero_cta-button {
+            display: flex;
+            gap: 32px;
+        }
+
+        .hero_cta-link-1 {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            color: #FFFFFF;
+            background: var(--gradient-primary);
+            padding: 14px 36px;
+            border-radius: 30px;
+            box-shadow: 6px 6px 15px 0px rgba(47, 160, 198, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .hero_cta-link-2 {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--primary-blue);
+            padding: 14px 36px;
+            background-color: #FFFFFF;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .hero_cta-link-1:hover, .hero_cta-link-2:hover { transform: scale(1.05); }
+
+        /* --- SECTION ACTIVITY (STYLE SECTION-5) --- */
+        .section-activities {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 64px;
+        }
+
+        .section-title {
+            font-weight: 700;
+            font-size: 36px;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        .activities_main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            width: 100%;
+        }
+
+        .activity_item {
+            background-color: var(--bg-white);
+            border: 2px solid var(--header-border);
+            box-shadow: var(--shadow);
+            border-radius: 48px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activity_item:hover { transform: translateY(-10px); }
+
+        .activity_image {
+            width: 100%;
+            height: 224px;
+            object-fit: cover;
+            padding: 16px;
+            border-radius: 48px;
+        }
+
+        .activity_text {
+            padding: 0 32px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .activity_tag {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tag-child {
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--primary-dark);
+            background-color: var(--bg-body);
+            padding: 6px 14px;
+        }
+
+        .activity_item-title {
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--primary-dark);
+        }
+
+        .activity_item-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 20px;
+        }
+
+        /* --- DETAIL VIEW --- */
+        #detail-view {
+            display: none;
+            padding-top: 40px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 32px;
+        }
+
+        .detail-banner {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 48px;
+            box-shadow: var(--shadow);
+            margin-bottom: 48px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .detail-section {
+            margin-bottom: 48px;
+        }
+
+        .detail-section-title {
+            font-size: 28px;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
+        }
+
+        .result-item {
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+            border: 2px solid var(--header-border);
+            margin-bottom: 16px;
+            box-shadow: 4px 4px 10px rgba(203, 219, 232, 0.4);
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .album-img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+
+        /* --- SIDEBAR REGISTRATION --- */
+        .sidebar-card {
+            background-color: white;
+            border-radius: 48px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--header-border);
+        }
+
+        .timer-grid {
+            display: flex;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .timer-box {
+            flex: 1;
+            background: var(--bg-body);
+            padding: 12px 5px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--accent-blue);
+        }
+
+        .timer-val { display: block; font-size: 20px; font-weight: 800; color: var(--primary-blue); }
+        .timer-label { font-size: 10px; text-transform: uppercase; color: var(--text-muted); }
+
+        .reg-btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .reg-btn-active {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 6px 6px 15px rgba(47, 160, 198, 0.3);
+        }
+
+        .reg-btn-disabled {
+            background: #E2E8F0;
+            color: #94A3B8;
+            cursor: not-allowed;
+        }
+
+        .reg-btn-active:hover { transform: scale(1.03); }
+
+        /* --- FAQ (SECTION-6) --- */
+        .section-faq {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .faq_item {
+            background-color: #FFFFFF;
+            border-radius: 48px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 24px;
+        }
+
+        .faq_question {
+            padding: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--primary-dark);
+        }
+
+        .faq_answer {
+            padding: 0 40px 32px 48px;
+            color: var(--text-muted);
+            border-left: 4px solid var(--accent-blue);
+            margin: 0 32px 32px;
+            display: none;
+        }
+
+        .faq_item.active .faq_answer { display: block; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--footer-dark);
+            border-radius: 64px 64px 0 0;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+            color: #FFFFFF;
+            margin-top: 40px;
+        }
+
+        .footer_main {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .footer_column { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .footer_text_blue { color: var(--footer-text-blue); font-weight: 700; font-size: 24px; }
+        .footer_social { display: flex; gap: 16px; }
+        .footer_social-icon {
+            width: 48px; height: 48px; border-radius: 50%; background: var(--social-bg);
+            display: flex; align-items: center; justify-content: center; transition: 0.3s;
+        }
+        .footer_social-icon:hover { background: var(--primary-blue); transform: translateY(-5px); }
+        .footer_bottom {
+            text-align: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 12px; color: var(--text-footer-bottom); letter-spacing: 4.8px; text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            header, .view-container { margin-left: 40px; margin-right: 40px; padding: 0; }
+            .activities_main { grid-template-columns: repeat(2, 1fr); }
+            .detail-grid { grid-template-columns: 1fr; }
+            .sidebar-card { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .activities_main { grid-template-columns: 1fr; }
+            .main-header { font-size: 48px; }
+            footer { padding: 40px 20px; border-radius: 32px 32px 0 0; }
+            .footer_main { flex-direction: column; text-align: center; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header_logo" onclick="showHome()">
+            <div class="logo-box">B</div>
+            <div class="header_text">BAN CÔNG NGHỆ</div>
+        </div>
+        <div class="header_nav">
+            <a class="header_nav_item" href="#" onclick="showHome()">TRANG CHỦ</a>
+            <a class="header_nav_item" href="#activities">HOẠT ĐỘNG</a>
+            <a class="header_nav_item" href="#faq">GIẢI ĐÁP</a>
+        </div>
+        <div class="header_cta-button">
+            <a class="header_cta-link" href="#">Tham gia BCN</a>
+        </div>
+    </header>
+
+    <!-- VIEW TRANG CHỦ -->
+    <main id="home-view" class="view-container">
+        <section class="hero">
+            <div class="pre-header">Hải trình công nghệ • Khám phá tương lai</div>
+            <div class="main-header">Đại dương <span>tri thức</span> <br>vẫy gọi các bạn</div>
+            <div class="sub-header">Môi trường chuyên nghiệp để K22-K23 tự tin bơi lội trong thế giới lập trình và kỹ thuật đỉnh cao.</div>
+            <div class="hero_cta-button">
+                <a class="hero_cta-link-1" href="#activities">Xem hoạt động</a>
+                <a class="hero_cta-link-2" href="#">Tìm hiểu thêm</a>
+            </div>
+        </section>
+
+        <!-- Hoạt động tiêu biểu -->
+        <section id="activities" class="section-activities">
+            <h2 class="section-title">Hoạt động tiêu biểu</h2>
+            <div class="activities_main" id="activities-list">
+                <!-- Data injected by JS -->
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="section-faq">
+            <h2 class="section-title" style="margin-bottom: 40px;">Góc giải đáp</h2>
+            <div class="faq_item" onclick="this.classList.toggle('active')">
+                <div class="faq_question">Em chưa biết code có vào được ban không? <span>+</span></div>
+                <div class="faq_answer">Được chứ em! BCN luôn mở cửa cho mọi tâm hồn đam mê. Chúng mình sẽ hướng dẫn em từ con số 0 với lộ trình bài bản nhất.</div>
+            </div>
+            <div class="faq_item" onclick="this.classList.toggle('active')">
+                <div class="faq_question">Lịch sinh hoạt ban mình như thế nào? <span>+</span></div>
+                <div class="faq_answer">Ban sinh hoạt định kỳ vào tối cuối tuần. Ngoài ra các nhóm nhỏ dự án sẽ linh hoạt học tập theo thời gian rảnh.</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- VIEW CHI TIẾT -->
+    <main id="detail-view" class="view-container">
+        <div class="back-btn" onclick="showHome()">
+            <i data-lucide="arrow-left"></i> QUAY LẠI TRANG CHỦ
+        </div>
+        <div id="detail-content">
+            <!-- Content injected by JS -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer_main">
+            <div class="footer_column">
+                <div class="footer_text_blue">BAN CÔNG NGHỆ</div>
+                <p style="color: rgba(255,255,255,0.7); font-size: 14px; max-width: 350px;">Nơi ươm mầm tài năng và hiện thực hóa các giải pháp công nghệ sáng tạo cho cộng đồng sinh viên.</p>
+                <div class="footer_social">
+                    <a href="#" class="footer_social-icon"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="footer_social-icon"><i data-lucide="github"></i></a>
+                    <a href="#" class="footer_social-icon"><i data-lucide="youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer_column">
+                <h4 style="font-size: 18px; margin-bottom: 20px;">Khám phá</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 14px;">Về chúng tôi</p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 14px;">Các dự án</p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 14px;">Lộ trình phát triển</p>
+            </div>
+            <div class="footer_column">
+                <h4 style="font-size: 18px; margin-bottom: 20px;">Văn phòng</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 14px;">Lầu 1, Nhà H - IUH</p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 14px;">Số 12 Nguyễn Văn Bảo, Gò Vấp, TP.HCM</p>
+            </div>
+        </div>
+        <div class="footer_bottom">© 2026 BAN CÔNG NGHỆ • PRISM GUILD</div>
+    </footer>
+
+    <script>
+        const ACTIVITIES_DATA = [
+            {
+                id: 1,
+                title: "Code Fest 2024: Hải Trình Bứt Phá",
+                tags: ["Lập trình", "Website"],
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
+                intro: "Cuộc thi lập trình lớn nhất năm dành cho các thợ lặn mã nguồn, nơi bạn chinh phục các thử thách thuật toán và xây dựng sản phẩm thực tế.",
+                results: [
+                    "Thu hút hơn 500 sinh viên tham gia tranh tài.",
+                    "Phát triển thành công 15 ứng dụng web thực tiễn.",
+                    "Tổng giải thưởng trao tặng lên đến 50 triệu đồng."
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=400",
+                    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=400",
+                    "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400"
+                ],
+                status: "closed",
+                deadline: "2024-12-01T00:00:00"
+            },
+            {
+                id: 2,
+                title: "Workshop UI/UX: Giao Diện Đại Dương",
+                tags: ["Thiết kế", "UI/UX"],
+                image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800",
+                intro: "Buổi chia sẻ kiến thức chuyên sâu về tư duy thiết kế và trải nghiệm người dùng hiện đại trong kỷ nguyên số.",
+                results: [
+                    "Đào tạo kỹ năng Figma cho 200 bạn sinh viên.",
+                    "Xây dựng thành công 10 bộ giao diện mẫu ấn tượng.",
+                    "Kết nối với 3 chuyên gia từ các Agency lớn."
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=400",
+                    "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=400",
+                    "https://images.unsplash.com/photo-1576153192396-180ecef2a715?auto=format&fit=crop&q=80&w=400"
+                ],
+                status: "closed",
+                deadline: "2024-11-15T00:00:00"
+            },
+            {
+                id: 3,
+                title: "Tech Camp 2026: Sóng Thần Công Nghệ",
+                tags: ["Thực chiến", "React"],
+                image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800",
+                intro: "Trại huấn luyện công nghệ tập trung cho các dự án thực tế. Đây là hoạt động mô phỏng ĐANG MỞ để bạn kiểm tra tính năng đếm ngược.",
+                results: [
+                    "Làm việc trực tiếp cùng các Mentor dày dặn kinh nghiệm.",
+                    "Nhận chứng chỉ hoàn thành khoá huấn luyện thực chiến.",
+                    "Hỗ trợ đưa sản phẩm lên môi trường Production."
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=400",
+                    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=400",
+                    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400"
+                ],
+                status: "active",
+                // Thiết lập deadline 2 ngày sau kể từ lúc này
+                deadline: new Date(Date.now() + 172800000 + 18000000).toISOString()
+            }
+        ];
+
+        let timerId = null;
+
+        function showHome() {
+            document.getElementById('home-view').style.display = 'flex';
+            document.getElementById('detail-view').style.display = 'none';
+            if (timerId) clearInterval(timerId);
+            window.scrollTo(0, 0);
+        }
+
+        function renderActivities() {
+            const list = document.getElementById('activities-list');
+            list.innerHTML = ACTIVITIES_DATA.map(act => `
+                <div class="activity_item" onclick="showDetail(${act.id})">
+                    <img class="activity_image" src="${act.image}" alt="${act.title}">
+                    <div class="activity_text">
+                        <div class="activity_tag">
+                            ${act.tags.map(t => `<div class="tag-child">${t}</div>`).join('')}
+                        </div>
+                        <h3 class="activity_item-title">${act.title}</h3>
+                        <p class="activity_item-description">${act.intro}</p>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                            <span style="color:var(--text-muted); font-size:0.8rem">Deadline: ${new Date(act.deadline).toLocaleDateString('vi-VN')}</span>
+                            <span style="color:var(--primary-blue); font-weight:700; font-size:0.9rem">Xem thêm →</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function showDetail(id) {
+            const act = ACTIVITIES_DATA.find(a => a.id === id);
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('detail-view').style.display = 'flex';
+            window.scrollTo(0, 0);
+
+            const content = document.getElementById('detail-content');
+            content.innerHTML = `
+                <img class="detail-banner" src="${act.image}">
+                
+                <div class="detail-grid">
+                    <div class="detail-main">
+                        <div class="detail-section">
+                            <h2 class="detail-section-title"># Giới thiệu hoạt động</h2>
+                            <p style="color:var(--text-muted); font-size:1.1rem; line-height:1.8;">${act.intro}</p>
+                        </div>
+
+                        <div class="detail-section">
+                            <h2 class="detail-section-title"># Kết quả đạt được</h2>
+                            <div>
+                                ${act.results.map(r => `<div class="result-item">${r}</div>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h2 class="detail-section-title"># Album hình ảnh</h2>
+                            <div class="album-grid">
+                                ${act.gallery.map(img => `<img class="album-img" src="${img}">`).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-sidebar">
+                        <div class="sidebar-card">
+                            <h3 style="font-size:22px; color:var(--primary-dark); margin-bottom:24px;">Đăng ký tham gia</h3>
+                            
+                            ${act.status === 'active' ? `
+                                <p style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Thời gian còn lại:</p>
+                                <div class="timer-grid" id="countdown"></div>
+                                <div style="margin:24px 0; color:var(--text-muted); font-size:14px;">
+                                    <p style="margin-bottom:8px;">📍 Địa điểm: Lầu 1, Nhà H - IUH</p>
+                                    <p>👥 Đối tượng: Thành viên BCN</p>
+                                </div>
+                                <button class="reg-btn reg-btn-active" id="btn-reg" onclick="handleReg()">ĐĂNG KÝ NGAY</button>
+                            ` : `
+                                <div style="background:var(--bg-body); padding:20px; border-radius:24px; text-align:center; color:var(--text-muted); font-style:italic; font-size:14px; border:1px solid var(--accent-blue);">
+                                    Hoạt động hiện đã kết thúc hoặc chưa mở cổng đăng ký.
+                                </div>
+                                <button class="reg-btn reg-btn-disabled" disabled>Hoạt động chưa mở</button>
+                            `}
+                            
+                            <p style="margin-top:20px; text-align:center; font-size:11px; color:var(--text-muted);">Mọi thắc mắc vui lòng liên hệ Ban Chủ Nhiệm qua Fanpage.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+            if (act.status === 'active') startCountdown(act.deadline);
+        }
+
+        function startCountdown(deadline) {
+            const el = document.getElementById('countdown');
+            function update() {
+                const diff = new Date(deadline) - new Date();
+                if (diff <= 0) {
+                    el.innerHTML = "<span style='color:red; font-weight:700;'>Đã hết hạn!</span>";
+                    return;
+                }
+                const d = Math.floor(diff / 86400000);
+                const h = Math.floor((diff % 86400000) / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+
+                el.innerHTML = `
+                    <div class="timer-box"><span class="timer-val">${d}</span><span class="timer-label">Ngày</span></div>
+                    <div class="timer-box"><span class="timer-val">${h}</span><span class="timer-label">Giờ</span></div>
+                    <div class="timer-box"><span class="timer-val">${m}</span><span class="timer-label">Phút</span></div>
+                    <div class="timer-box"><span class="timer-val">${s}</span><span class="timer-label">Giây</span></div>
+                `;
+            }
+            update();
+            timerId = setInterval(update, 1000);
+        }
+
+        function handleReg() {
+            const btn = document.getElementById('btn-reg');
+            btn.innerText = "ĐANG XỬ LÝ...";
+            setTimeout(() => {
+                btn.innerText = "ĐĂNG KÝ THÀNH CÔNG!";
+                btn.style.background = "#22c55e";
+                btn.style.boxShadow = "none";
+                btn.disabled = true;
+            }, 1000);
+        }
+
+        window.onload = () => {
+            renderActivities();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
